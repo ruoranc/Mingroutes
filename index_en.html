@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <style>
 
         html, body, #map { width: 100%; height: 100%; margin: 0; background: #fff; }
@@ -64,7 +65,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-              <a class="nav-link" href="index.html">中文 </a>
+              <a class="nav-link" href="index.html">中文 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="index_en.html">English</a>
@@ -74,7 +75,7 @@
           </ul>
           
         </div>
-      </nav>
+    </nav>
 <!-- Our web map and content will go here -->
 <div id="map"></div>
 <script>
@@ -104,13 +105,12 @@
     }
     // Get GeoJSON and put on it on the map when it loads
 
-    mingroute= L.geoJson.ajax("assets/ming_route_station_official.geojson", {
+    mingroute= L.geoJson.ajax("assets/station_english.geojson", {
         // assign a function to the onEachFeature parameter of the cellTowers object.
         // Then each (point) feature will bind a popup window.
         // The content of the popup window is the value of `feature.properties.company`
         onEachFeature: function (feature, layer) {
-            layer.bindPopup("驿站名:" + feature.properties.LABEL + '<hr>' + '明代地区:' + feature.properties.OLD_REGION +
-                '<hr>' + '今辖区:' + feature.properties.COUNTY + '/' + feature.properties.PERFECTURE + '/' + feature.properties.PROVINCE);
+            layer.bindPopup("Station Name:" + feature.properties.LABEL);
         },
         pointToLayer: function (feature, latlng) {
             var id = 0;
@@ -141,7 +141,7 @@
         style: style,
 
         onEachFeature: function (feature, layer) {
-            layer.bindPopup("州府名:" + feature.properties.NAME_CH);
+            layer.bindPopup("Prefecture name:" + feature.properties.NAME_PY);
         },
     }).addTo(mymap);
 
@@ -156,10 +156,10 @@
         // Create Div Element and Populate it with HTML
         var div = L.DomUtil.create('div', 'legend');
         div.innerHTML += '<hr><b>Station<b><br />';
-        div.innerHTML += '<i class="fa fa-home marker-color-1"></i><p> 马驿</p>';
-        div.innerHTML += '<i class="fa fa-home marker-color-2"></i><p> 水驿</p>';
-        div.innerHTML += '<i class="fa fa-home marker-color-3"></i><p> 水马驿</p>';
-        div.innerHTML += '<i class="fa fa-home marker-color-4"></i><p> 类型不可考</p>';
+        div.innerHTML += '<i class="fa fa-home marker-color-1"></i><p> Land Station</p>';
+        div.innerHTML += '<i class="fa fa-home marker-color-2"></i><p> Water Station</p>';
+        div.innerHTML += '<i class="fa fa-home marker-color-3"></i><p> Amphibious Station</p>';
+        div.innerHTML += '<i class="fa fa-home marker-color-4"></i><p> Station Type Unknown</p>';
         div.innerHTML += '<hr>';
         // Return the Legend div containing the HTML content
         return div;
