@@ -1,8 +1,7 @@
-# ruoranc.github.io
 A Chinese Historical Transportation GIS System
 
-[中文页面](https://ruoranc.github.io/index.html)  
-[English Version](https://ruoranc.github.io/index_en.html)
+[中文页面](https://ruoranc.github.io/Mingroutes/index.html)  
+[English Version](https://ruoranc.github.io/Mingroutes/index_en.html)
 
 ## 中国历史交通gis系统 (CHTGIS)
 本系统的最终目标是完成一个涵盖14世纪到18世纪且能够计算两地之间交通时间和交通成本的GIS系统。目前本项目完成了第一阶段，完成了交通驿站节点
